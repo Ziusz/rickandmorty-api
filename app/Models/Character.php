@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
-    //
+    protected $fillable = [
+        'name',
+        'status',
+        'location',
+        'last_episode',
+        'species',
+        'origin'
+    ];
 }
