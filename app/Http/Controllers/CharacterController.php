@@ -13,7 +13,15 @@ class CharacterController extends Controller
      */
     public function index()
     {
+        return view('app');
+    }
+
+    /**
+     * Get characters data for API.
+     */
+    public function getCharacters()
+    {
         $characters = DB::table('characters')->get();
-        dd($characters);
+        return response()->json($characters);
     }
 }
