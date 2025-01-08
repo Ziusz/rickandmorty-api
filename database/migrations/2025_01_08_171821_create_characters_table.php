@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('status');
+            $table->string('location');
+            $table->string('last_episode');
+            $table->string('species');
+            $table->string('origin');
             $table->timestamps();
         });
     }
