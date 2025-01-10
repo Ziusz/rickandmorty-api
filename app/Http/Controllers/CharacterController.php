@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Character;
+use App\Repositories\CharacterRepository;
 
 class CharacterController extends Controller
 {
+    public function __construct(
+        private readonly CharacterRepository $characterRepository,
+    ) {}
+
     /**
      * Display a listing of the resource.
      */
@@ -19,7 +23,7 @@ class CharacterController extends Controller
      */
     public function getCharacters()
     {
-        $characters = Character::get();
+        $characters = $this->characterRepository->getAll();
         return response()->json($characters);
     }
 }

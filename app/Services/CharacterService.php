@@ -4,12 +4,15 @@ namespace App\Services;
 
 use App\Exceptions\DuplicateCharacterException;
 use App\Exceptions\InvalidPageParamException;
-use App\Models\Character;
+use App\Repositories\CharacterRepository;
 use Illuminate\Database\UniqueConstraintViolationException;
 
 class CharacterService
 {
-    public function __construct(private readonly CharacterAPIService $characterAPIService){}
+    public function __construct(
+        private readonly CharacterAPIService $characterAPIService,
+        private readonly CharacterRepository $characterRepository,
+    ) {}
 
     /**
      * @throws InvalidPageParamException
@@ -33,7 +36,7 @@ class CharacterService
                 $lastEpisodeUrl = last($character['episode']);
                 $lastEpisodeName = $this->characterAPIService->getEpisodeName($lastEpisodeUrl);
 
-                Character::create([
+                $this->characterRepository->create([
                     'name' => $character['name'],
                     'status' => $character['status'],
                     'location' => $character['location']['name'],
