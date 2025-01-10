@@ -6,7 +6,7 @@ use App\Models\Character;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class CharacterAPIControllerTest extends TestCase
+class CharacterFrontAPIControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -55,4 +55,4 @@ class CharacterAPIControllerTest extends TestCase
             ->assertJsonCount(0, 'data')
             ->assertJsonStructure(['data']);
     }
-} 
+}

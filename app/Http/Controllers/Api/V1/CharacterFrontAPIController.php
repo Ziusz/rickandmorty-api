@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Contracts\CharacterRepositoryInterface;
-use App\Http\Controllers\Api\V1\Resources\CharacterAPIResource;
+use App\Http\Controllers\Api\V1\Resources\CharacterFrontAPIResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class CharacterAPIController extends Controller
+class CharacterFrontAPIController extends Controller
 {
     public function __construct(
         private readonly CharacterRepositoryInterface $characterRepository,
@@ -19,6 +19,6 @@ class CharacterAPIController extends Controller
     public function index(): ResourceCollection
     {
         $characters = $this->characterRepository->getAll();
-        return CharacterAPIResource::collection($characters);
+        return CharacterFrontAPIResource::collection($characters);
     }
 }

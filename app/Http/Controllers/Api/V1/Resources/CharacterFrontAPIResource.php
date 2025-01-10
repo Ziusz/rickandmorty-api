@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\V1\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CharacterAPIResource extends JsonResource
+class CharacterFrontAPIResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
