@@ -11,11 +11,11 @@ use App\Exceptions\InvalidPageParamException;
 use App\Models\Character;
 use Illuminate\Database\UniqueConstraintViolationException;
 
-class CharacterService implements CharacterServiceInterface
+readonly class CharacterService implements CharacterServiceInterface
 {
     public function __construct(
-        private readonly CharacterAPIServiceInterface $characterAPIService,
-        private readonly CharacterRepositoryInterface $characterRepository,
+        private CharacterAPIServiceInterface $characterAPIService,
+        private CharacterRepositoryInterface $characterRepository,
     ) {}
 
     /**
@@ -29,9 +29,6 @@ class CharacterService implements CharacterServiceInterface
         }
     }
 
-    /**
-     * @throws DuplicateCharacterException
-     */
     public function loadCharacters(int $page): array {
         $characters = $this->characterAPIService->getCharacters($page);
         $messages = [];

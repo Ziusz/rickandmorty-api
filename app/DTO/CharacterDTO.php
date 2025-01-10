@@ -2,15 +2,15 @@
 
 namespace App\DTO;
 
-class CharacterDTO
+readonly class CharacterDTO
 {
     public function __construct(
-        public readonly string $name,
-        public readonly string $status,
-        public readonly string $location,
-        public readonly string $lastEpisode,
-        public readonly string $species,
-        public readonly string $origin
+        public string $name,
+        public string $status,
+        public string $location,
+        public string $lastEpisode,
+        public string $species,
+        public string $origin
     ) {}
 
     public static function fromAPI(array $data): self
