@@ -22,6 +22,8 @@ class CharacterAPIResource extends JsonResource
             'last_episode' => $this->last_episode,
             'species' => $this->species,
             'origin' => $this->origin,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
