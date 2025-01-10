@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\DTO\CharacterDTO;
 use App\Exceptions\DuplicateCharacterException;
 use App\Exceptions\InvalidPageParamException;
 use App\Repositories\CharacterRepository;
@@ -34,17 +35,11 @@ class CharacterService
 
             foreach ($characters as $character) {
                 $lastEpisodeUrl = last($character['episode']);
-                $lastEpisodeName = $this->characterAPIService->getEpisodeName($lastEpisodeUrl);
+                $character['last_episode'] = $this->characterAPIService->getEpisodeName($lastEpisodeUrl);
 
-                $this->characterRepository->create([
-                    'name' => $character['name'],
-                    'status' => $character['status'],
-                    'location' => $character['location']['name'],
-                    'last_episode' => $lastEpisodeName,
-                    'species' => $character['species'],
-                    'origin' => $character['origin']['name'],
-                ]);
+                $characterDTO = CharacterDTO::fromAPI($character);
 
+                $this->characterRepository->create($characterDTO->toArray());
             }
         } catch (UniqueConstraintViolationException) {
             throw new DuplicateCharacterException();

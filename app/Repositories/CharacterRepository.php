@@ -11,7 +11,7 @@ class CharacterRepository
         return Character::all();
     }
 
-    public function create(array $data): Collection {
+    public function create(array $data): Character {
         return Character::create($data);
     }
 }
