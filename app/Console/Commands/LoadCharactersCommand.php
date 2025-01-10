@@ -10,13 +10,13 @@ class LoadCharactersCommand extends Command
 {
     protected $signature = 'characters:load {page}';
 
-    protected $description = 'Load characters from API and save them in database';
+    protected $description = 'Load characters from API and save them in the database';
 
     public function handle()
     {
         $page = $this->argument('page');
 
-        $response = Http::get('https://rickandmortyapi.com/api/character?page='.$page);
+        $response = Http::get(config('services.rick_and_morty_api.url').'/character?page='.$page);
         $data = $response->json();
         $characters = $data['results'];
 
