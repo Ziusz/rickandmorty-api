@@ -19,6 +19,7 @@ readonly class CharacterService implements CharacterServiceInterface
     ) {}
 
     /**
+     * @param int $page
      * @throws InvalidPageParamException
      */
     public function verifyPageParam(int $page): void {
@@ -29,6 +30,10 @@ readonly class CharacterService implements CharacterServiceInterface
         }
     }
 
+    /**
+     * @param int $page
+     * @return array<string, mixed>
+     */
     public function loadCharacters(int $page): array {
         $characters = $this->characterAPIService->getCharacters($page);
         $messages = [];
@@ -46,6 +51,8 @@ readonly class CharacterService implements CharacterServiceInterface
     }
 
     /**
+     * @param array<string, mixed> $character
+     * @return Character
      * @throws DuplicateCharacterException
      */
     private function loadCharacter(array $character): Character

@@ -13,6 +13,10 @@ readonly class CharacterDTO
         public string $origin
     ) {}
 
+    /**
+     * @param array<string, mixed> $data
+     * @return self
+     */
     public static function fromAPI(array $data): self
     {
         return new self(
@@ -25,6 +29,9 @@ readonly class CharacterDTO
         );
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(): array
     {
         return [

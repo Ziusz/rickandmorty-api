@@ -18,6 +18,9 @@ class LoadCharactersCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * @return int
+     */
     public function handle(): int
     {
         try {
