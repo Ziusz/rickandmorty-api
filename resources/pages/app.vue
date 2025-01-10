@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 
 const characters = ref([]);
+const interval = 3000; // polling for every 3 seconds
 
 const fetchCharacters = async () => {
     try {
@@ -9,6 +10,8 @@ const fetchCharacters = async () => {
         characters.value = await response.data;
     } catch (error) {
         console.error('Occurred error: ', error);
+    } finally {
+        setTimeout(fetchCharacters, interval)
     }
 }
 
