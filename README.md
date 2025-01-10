@@ -51,6 +51,11 @@ A demo project built with Laravel and Vue.js that fetches and displays data from
    php artisan serve
    ```
 
+## Usage
+
+Open the browser and go to `http://localhost:8000` to see the application frontend.
+In terminal you can use `php artisan characters:load {$page}` to load characters from the API.
+
 ## License
 
 This project is under the [MIT license](LICENSE).
