@@ -3,33 +3,35 @@
 namespace App\Console\Commands;
 
 use App\Models\Character;
+use App\Services\CharacterAPIService;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Http;
 
 class LoadCharactersCommand extends Command
 {
     protected $signature = 'characters:load {page}';
-
     protected $description = 'Load characters from API and save them in the database';
+    protected CharacterAPIService $characterAPIService;
+
+    public function __construct(CharacterAPIService $characterAPIService)
+    {
+        parent::__construct();
+        $this->characterAPIService = $characterAPIService;
+    }
 
     public function handle()
     {
-        $page = $this->argument('page');
-
-        $response = Http::get(config('services.rick_and_morty_api.url').'/character?page='.$page);
-        $data = $response->json();
-        $characters = $data['results'];
+        $page = (int) $this->argument('page');
+        $characters = $this->characterAPIService->fetchCharacters($page);
 
         foreach ($characters as $character) {
-            $last_episode_url = last($character['episode']);
-            $response = Http::get($last_episode_url);
-            $last_episode = $response->json();
+            $lastEpisodeUrl = last($character['episode']);
+            $lastEpisodeName = $this->characterAPIService->getEpisodeName($lastEpisodeUrl);
 
             Character::create([
                 'name' => $character['name'],
                 'status' => $character['status'],
                 'location' => $character['location']['name'],
-                'last_episode' => $last_episode['name'],
+                'last_episode' => $lastEpisodeName,
                 'species' => $character['species'],
                 'origin' => $character['origin']['name'],
             ]);
