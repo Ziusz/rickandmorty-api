@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Contracts\CharacterServiceInterface;
 use App\Exceptions\DuplicateCharacterException;
 use App\Exceptions\InvalidPageParamException;
+use App\Exceptions\RickAndMortyAPIException;
 use Illuminate\Console\Command;
 
 class LoadCharactersCommand extends Command
@@ -35,7 +36,7 @@ class LoadCharactersCommand extends Command
             }
 
             return 0;
-        } catch (DuplicateCharacterException|InvalidPageParamException $e) {
+        } catch (DuplicateCharacterException|InvalidPageParamException|RickAndMortyAPIException $e) {
             $this->error($e->getMessage());
             return 1;
         }
