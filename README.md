@@ -59,8 +59,8 @@ A demo project built with Laravel and Vue.js that fetches and displays data from
 ## Usage
 
 Open the browser and go to `http://localhost:8000` to see the application frontend.<br>
-In terminal you can use `php artisan characters:load {$page}` to load characters from the API, for example
-`php artisan characters:load 10` to load 10th page of the API.
+In terminal you can use `php artisan characters:load {$page}` to load characters from the API, for example<br>
+`php artisan characters:load 10` to load the 10th page of the API.
 
 ## License
 
