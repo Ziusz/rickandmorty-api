@@ -3,7 +3,7 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 const characters = ref([]);
-const interval = 3000; // polling for every 3 seconds
+const interval = 1000; // polling for every second
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
