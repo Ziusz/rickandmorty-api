@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\CharacterRepositoryInterface;
+use App\Http\Resources\CharacterResource;
 
 class CharacterController extends Controller
 {
@@ -24,6 +25,6 @@ class CharacterController extends Controller
     public function getCharacters()
     {
         $characters = $this->characterRepository->getAll();
-        return response()->json($characters);
+        return CharacterResource::collection($characters);
     }
 }
