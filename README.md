@@ -16,37 +16,42 @@ A demo project built with Laravel and Vue.js that fetches and displays data from
    git clone https://github.com/Ziusz/rickandmorty-api.git
    ```
 
-2. Copy example environment file to .env and set your database credentials (or use default values to use SQLite)
+2. Enter the new directory
+    ```bash
+    cd rickandmorty-api
+    ```
+
+3. Copy example environment file to .env and set your database credentials (or use default values to use SQLite)
    ```bash
    cp .env.example .env
    ```   
 
-3. Install PHP dependencies by Composer
+4. Install PHP dependencies by Composer
    ```bash
    composer install
    ```
 
-4. Generate application key
+5. Generate application key
    ```bash
    php artisan key:generate
    ```   
 
-5. Run database migrations
+6. Run database migrations
    ```bash
    php artisan migrate
    ```
 
-6. Install JavaScript dependencies
+7. Install JavaScript dependencies
    ```bash
    npm install
    ```
 
-7. Build the frontend
+8. Build the frontend
    ```bash
    npm run build
    ```
 
-8. Start the development server
+9. Start the development server
    ```bash
    php artisan serve
    ```
@@ -54,7 +59,8 @@ A demo project built with Laravel and Vue.js that fetches and displays data from
 ## Usage
 
 Open the browser and go to `http://localhost:8000` to see the application frontend.<br>
-In terminal you can use `php artisan characters:load {$page}` to load characters from the API.
+In terminal you can use `php artisan characters:load {$page}` to load characters from the API, for example
+`php artisan characters:load 10` to load 10th page of the API.
 
 ## License
 
