@@ -42,8 +42,13 @@ class CharacterAPIService
         return $response->json();
     }
 
-    public function getEpisodeName(string $episodeUrl): string {
+    private function getEpisodeName(string $episodeUrl): string {
         $episode = $this->fetchEpisode($episodeUrl);
         return $episode['name'];
+    }
+
+    public function getLastEpisodeOfCharacter(array $character): string {
+        $lastEpisodeUrl = last($character['episode']);
+        return $this->getEpisodeName($lastEpisodeUrl);
     }
 }

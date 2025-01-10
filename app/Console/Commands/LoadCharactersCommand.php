@@ -22,8 +22,18 @@ class LoadCharactersCommand extends Command
         try {
             $page = (int) $this->argument('page');
             $this->characterService->verifyPageParam($page);
-            $this->characterService->loadCharacters($page);
-            $this->info('Characters have been successfully added to the database!');
+            $characters = $this->characterService->loadCharacters($page);
+
+            if (!empty($characters)) {
+                foreach ($characters as $character) {
+                    if ($character['status'] === 'success') {
+                        $this->info($character['message']);
+                    } else {
+                        $this->error($character['message']);
+                    }
+                }
+            }
+
             return 0;
         } catch (DuplicateCharacterException|InvalidPageParamException $e) {
             $this->error($e->getMessage());
