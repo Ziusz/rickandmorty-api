@@ -13,11 +13,27 @@ class CharacterAPIService
         $this->url = config('services.rick_and_morty_api.url');
     }
 
-    public function fetchCharacters(int $page): array
+    private function fetchCharacters(int $page = 1): array
     {
         $response = Http::get("{$this->url}/character?page={$page}");
-        $data = $response->json();
+        return $response->json();
+    }
 
+    private function getInfo(): array
+    {
+        $data = $this->fetchCharacters();
+        return $data['info'];
+    }
+
+    public function getPagesCount(): int
+    {
+        $data = $this->getInfo();
+        return $data['pages'];
+    }
+
+    public function getCharacters(int $page = 1): array
+    {
+        $data = $this->fetchCharacters($page);
         return $data['results'];
     }
 
