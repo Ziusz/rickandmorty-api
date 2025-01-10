@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Contracts\CharacterServiceInterface;
 use App\Exceptions\DuplicateCharacterException;
 use App\Exceptions\InvalidPageParamException;
-use App\Services\CharacterService;
 use Illuminate\Console\Command;
 
 class LoadCharactersCommand extends Command
@@ -12,7 +12,7 @@ class LoadCharactersCommand extends Command
     protected $signature = 'characters:load {page}';
     protected $description = 'Load characters from API and save them in the database';
 
-    public function __construct(private readonly CharacterService $characterService)
+    public function __construct(private readonly CharacterServiceInterface $characterService)
     {
         parent::__construct();
     }

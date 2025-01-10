@@ -2,10 +2,11 @@
 
 namespace App\Repositories;
 
+use App\Contracts\CharacterRepositoryInterface;
 use App\Models\Character;
 use Illuminate\Database\Eloquent\Collection;
 
-class CharacterRepository
+class CharacterRepository implements CharacterRepositoryInterface
 {
     public function getAll(): Collection {
         return Character::all();

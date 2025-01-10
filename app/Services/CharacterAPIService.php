@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
+use App\Contracts\CharacterAPIServiceInterface;
 use Illuminate\Support\Facades\Http;
 
-class CharacterAPIService
+class CharacterAPIService implements CharacterAPIServiceInterface
 {
     private string $url;
 

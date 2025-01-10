@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\CharacterRepository;
+use App\Contracts\CharacterRepositoryInterface;
 
 class CharacterController extends Controller
 {
     public function __construct(
-        private readonly CharacterRepository $characterRepository,
+        private readonly CharacterRepositoryInterface $characterRepository,
     ) {}
 
     /**

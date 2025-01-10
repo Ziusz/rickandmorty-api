@@ -2,18 +2,20 @@
 
 namespace App\Services;
 
+use App\Contracts\CharacterAPIServiceInterface;
+use App\Contracts\CharacterRepositoryInterface;
+use App\Contracts\CharacterServiceInterface;
 use App\DTO\CharacterDTO;
 use App\Exceptions\DuplicateCharacterException;
 use App\Exceptions\InvalidPageParamException;
 use App\Models\Character;
-use App\Repositories\CharacterRepository;
 use Illuminate\Database\UniqueConstraintViolationException;
 
-class CharacterService
+class CharacterService implements CharacterServiceInterface
 {
     public function __construct(
-        private readonly CharacterAPIService $characterAPIService,
-        private readonly CharacterRepository $characterRepository,
+        private readonly CharacterAPIServiceInterface $characterAPIService,
+        private readonly CharacterRepositoryInterface $characterRepository,
     ) {}
 
     /**
