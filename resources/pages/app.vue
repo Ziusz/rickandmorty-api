@@ -1,13 +1,14 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import axios from 'axios';
 
 const characters = ref([]);
 const interval = 3000; // polling for every 3 seconds
 
 const fetchCharacters = async () => {
     try {
-        const response = await axios.get('/api/characters');
-        characters.value = await response.data;
+        const response = await axios.get('/api/v1/characters');
+        characters.value = await response.data.data;
     } catch (error) {
         console.error('Occurred error: ', error);
     } finally {
