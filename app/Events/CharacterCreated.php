@@ -22,7 +22,7 @@ class CharacterCreated implements ShouldBroadcast
      */
     public function __construct(private readonly CharacterServiceInterface $characterService)
     {
-        $this->character = $characterService->getCharacter($characterId);
+        $this->character = $this->characterService->getCharacter($characterId);
     }
 
     /**
@@ -32,6 +32,6 @@ class CharacterCreated implements ShouldBroadcast
      */
     public function broadcastOn(): Channel
     {
-        return new Channel('charactersUpdate');
+        return new Channel('characters');
     }
 }
