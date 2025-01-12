@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface CharacterRepositoryInterface
 {
-    public function all(): Collection;
+    public function getAll(): Collection;
     public function create(array $data): Character;
 }
