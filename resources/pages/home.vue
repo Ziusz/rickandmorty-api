@@ -3,7 +3,6 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 
 const characters = ref([]);
-const interval = 1000; // polling for every second
 
 const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -24,13 +23,22 @@ const fetchCharacters = async () => {
         characters.value = await response.data.data;
     } catch (error) {
         console.error('Occurred error: ', error);
-    } finally {
-        setTimeout(fetchCharacters, interval)
+    }
+}
+
+const listenForCharacterCreated = () => {
+    try {
+        Echo.channel('characters').listen('CharacterCreated', (character) => {
+            characters.value.push(character);
+        });
+    } catch (error) {
+        console.error('Error in WebSocket connection: ', error);
     }
 }
 
 onMounted(() => {
     fetchCharacters();
+    listenForCharacterCreated();
 })
 </script>
 
