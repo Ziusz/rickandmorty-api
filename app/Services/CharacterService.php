@@ -6,6 +6,7 @@ use App\Contracts\CharacterAPIServiceInterface;
 use App\Contracts\CharacterRepositoryInterface;
 use App\Contracts\CharacterServiceInterface;
 use App\DTO\CharacterDTO;
+use App\Events\CharacterCreated;
 use App\Exceptions\DuplicateCharacterException;
 use App\Exceptions\InvalidPageParamException;
 use App\Models\Character;
@@ -61,7 +62,10 @@ readonly class CharacterService implements CharacterServiceInterface
             $character['last_episode'] = $this->characterAPIService->getLastEpisodeOfCharacter($character);
             $characterDTO = CharacterDTO::fromAPI($character);
 
-            return $this->characterRepository->create($characterDTO->toArray());
+            $createdCharacter = $this->characterRepository->create($characterDTO->toArray());
+            event(new CharacterCreated($createdCharacter));
+
+            return $createdCharacter;
         } catch (UniqueConstraintViolationException) {
             throw new DuplicateCharacterException();
         }
