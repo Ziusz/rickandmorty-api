@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import axios from 'axios';
 
 const characters = ref([]);
@@ -39,6 +39,10 @@ const listenForCharacterCreated = () => {
 onMounted(() => {
     fetchCharacters();
     listenForCharacterCreated();
+})
+
+onUnmounted(() => {
+    Echo.leaveChannel('characters');
 })
 </script>
 
