@@ -56,6 +56,18 @@ A demo project built with Laravel and Vue.js that fetches and displays data from
    php artisan serve
    ```
 
+9. Edit .env file and set the values for REVERB_APP_ID, REVERB_APP_KEY, REVERB_APP_SECRET:
+   ```txt
+   REVERB_APP_ID=(int between 100000 and 999999)
+   REVERB_APP_KEY=(string, lowercase, 20 characters)
+   REVERB_APP_SECRET=(string, lowercase, 20 characters)
+   ```
+
+10. Start the Reverb server (in a separate terminal)
+   ```bash
+   php artisan reverb:start
+   ```
+
 ## Usage
 
 Open the browser and go to `http://localhost:8000` to see the application frontend.<br>
