@@ -99,6 +99,7 @@ class CharacterAPIService implements CharacterAPIServiceInterface
     /**
      * @param array<string, mixed> $character
      * @return string
+     * @throws RickAndMortyAPIException
      */
     public function getLastEpisodeOfCharacter(array $character): string {
         $lastEpisodeUrl = last($character['episode']);
