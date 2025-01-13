@@ -12,61 +12,61 @@ A demo project built with Laravel and Vue.js that fetches and displays data from
 ## Installation
 
 1. Clone the repository
-   ```bash
-   git clone https://github.com/Ziusz/rickandmorty-api.git
-   ```
+```bash
+git clone https://github.com/Ziusz/rickandmorty-api.git
+```
 
 2. Enter the new directory
-    ```bash
-    cd rickandmorty-api
-    ```
+```bash
+cd rickandmorty-api
+```
 
 3. Copy example environment file to .env and set your database credentials (or use default values to use SQLite)
-   ```bash
-   cp .env.example .env
-   ```   
+```bash
+cp .env.example .env
+```   
 
 4. Install PHP dependencies by Composer
-   ```bash
-   composer install
-   ```
+```bash
+composer install
+```
 
 5. Generate application key
-   ```bash
-   php artisan key:generate
-   ```   
+```bash
+php artisan key:generate
+```   
 
 6. Run database migrations
-   ```bash
-   php artisan migrate
-   ```
+```bash
+php artisan migrate
+```
 
 7. Install JavaScript dependencies
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 8. Build the frontend
-   ```bash
-   npm run build
-   ```
+```bash
+npm run build
+```
 
 9. Start the development server
-   ```bash
-   php artisan serve
-   ```
+```bash
+php artisan serve
+```
 
 10. Edit .env file and set the values for REVERB_APP_ID, REVERB_APP_KEY, REVERB_APP_SECRET:
-   ```txt
-   REVERB_APP_ID=(int between 100000 and 999999)
-   REVERB_APP_KEY=(string, lowercase, 20 characters)
-   REVERB_APP_SECRET=(string, lowercase, 20 characters)
-   ```
+```txt
+REVERB_APP_ID=(int between 100000 and 999999)
+REVERB_APP_KEY=(string, lowercase, 20 characters)
+REVERB_APP_SECRET=(string, lowercase, 20 characters)
+```
 
 11. Start the Reverb server (in a separate terminal)
-   ```bash
-   php artisan reverb:start
-   ```
+```bash
+php artisan reverb:start
+```
 
 ## Usage
 
