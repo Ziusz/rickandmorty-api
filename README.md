@@ -41,26 +41,24 @@ php artisan key:generate
 php artisan migrate
 ```
 
-7. Install JavaScript dependencies
+7. Install broadcast dependencies (Laravel Reverb)
+```bash
+php artisan install:broadcasting
+```
+
+8. Install JavaScript dependencies
 ```bash
 npm install
 ```
 
-8. Build the frontend
+9. Build the frontend
 ```bash
 npm run build
 ```
 
-9. Start the development server
+10. Start the development server
 ```bash
 php artisan serve
-```
-
-10. Edit .env file and set the values for REVERB_APP_ID, REVERB_APP_KEY, REVERB_APP_SECRET:
-```txt
-REVERB_APP_ID=(int between 100000 and 999999)
-REVERB_APP_KEY=(string, lowercase, 20 characters)
-REVERB_APP_SECRET=(string, lowercase, 20 characters)
 ```
 
 11. Start the Reverb server (in a separate terminal)
