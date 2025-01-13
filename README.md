@@ -11,9 +11,9 @@ A demo project built with Laravel and Vue.js that fetches and displays data from
 
 ## Installation
 
-1. Clone the repository
+1. Clone the branch of the repository
 ```bash
-git clone https://github.com/Ziusz/rickandmorty-api.git
+git clone -b websocket --single-branch https://github.com/Ziusz/rickandmorty-api.git
 ```
 
 2. Enter the new directory
